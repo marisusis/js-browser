@@ -1,0 +1,13 @@
+<input type="text" id="search">
+<button onclick="click()" id='submit'>Submit</button>
+<iframe width=1000 height=500 id="frame"></iframe>
+<script src=jquery.min.js></script>
+<script>
+document.getElementById('submit').onclick = function() {
+var s = document.getElementById('search').value;
+$.getJSON('http://whateverorigin.org/get?url=' + encodeURIComponent(s) + '&callback=?', function(data){
+	var f = document.getElementById('frame');
+	f.contentDocument.write(data.contents);
+});
+}
+        </script>
